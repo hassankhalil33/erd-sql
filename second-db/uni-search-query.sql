@@ -22,3 +22,10 @@ WHERE students.name NOT IN(SELECT students.name FROM students, enrolls, courses
 WHERE students.id = enrolls.students_id AND courses.id_crn = enrolls.courses_id_crn
 GROUP BY students.name)
 GROUP BY students.name;
+
+-- CS Students Enrolled in CSC275
+
+SELECT COUNT(*) FROM students s, departments d, courses c, enrolls e, majors m
+WHERE d.name = "CS" AND c.name = "CSC275" AND c.id_crn = e.courses_id_crn
+AND e.students_id = s.id AND s.id = m.students_id
+AND m.departments_id = d.id;
