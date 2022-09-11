@@ -35,3 +35,9 @@ AND m.departments_id = d.id;
 SELECT COUNT(*) FROM students s, enrolls e, courses c, departments d, majors m
 WHERE d.name = "CS" AND d.id = m.departments_id AND m.students_id = s.id 
 AND s.id = e.students_id AND e.courses_id_crn = c.id_crn;
+
+-- Number of majors each student declared
+
+SELECT s.name, COUNT(m.students_id) FROM students s, majors m
+WHERE s.id = m.students_id
+GROUP BY s.name;
