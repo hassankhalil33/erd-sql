@@ -41,3 +41,10 @@ AND s.id = e.students_id AND e.courses_id_crn = c.id_crn;
 SELECT s.name, COUNT(m.students_id) FROM students s, majors m
 WHERE s.id = m.students_id
 GROUP BY s.name;
+
+-- Majoring Students
+
+SELECT d.name, COUNT(m.departments_id) FROM departments d, majors m
+WHERE d.id = m.departments_id
+GROUP BY d.name
+HAVING COUNT(m.departments_id) > 1;
