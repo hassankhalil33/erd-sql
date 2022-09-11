@@ -32,6 +32,6 @@ AND m.departments_id = d.id;
 
 -- CS students any course
 
-SELECT s.name, d.name FROM students s, enrolls e, courses c, departments d, majors m
+SELECT COUNT(*) FROM students s, enrolls e, courses c, departments d, majors m
 WHERE d.name = "CS" AND d.id = m.departments_id AND m.students_id = s.id 
 AND s.id = e.students_id AND e.courses_id_crn = c.id_crn;
