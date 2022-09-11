@@ -23,9 +23,15 @@ WHERE students.id = enrolls.students_id AND courses.id_crn = enrolls.courses_id_
 GROUP BY students.name)
 GROUP BY students.name;
 
--- CS Students Enrolled in CSC275
+-- CS students enrolled in CSC275
 
 SELECT COUNT(*) FROM students s, departments d, courses c, enrolls e, majors m
 WHERE d.name = "CS" AND c.name = "CSC275" AND c.id_crn = e.courses_id_crn
 AND e.students_id = s.id AND s.id = m.students_id
 AND m.departments_id = d.id;
+
+-- CS students any course
+
+SELECT s.name, d.name FROM students s, enrolls e, courses c, departments d, majors m
+WHERE d.name = "CS" AND d.id = m.departments_id AND m.students_id = s.id 
+AND s.id = e.students_id AND e.courses_id_crn = c.id_crn;
